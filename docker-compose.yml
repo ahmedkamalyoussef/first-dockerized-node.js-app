@@ -1,0 +1,9 @@
+version: '2.29.1'
+services:
+  node-app:
+    container_name: express-node-app-container
+    # build: .
+    ports:
+      - "4000:3000"
+    env_file:
+      - ./.env

@@ -1,0 +1,11 @@
+version: '2.29.1'
+services:
+  node-app:
+    build: 
+      context: .
+      target: production
+      # args:
+      #   - NODE_ENV=production
+    environment:
+      - NODE_ENV=production
+    command: npm start
