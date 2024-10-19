@@ -1,4 +1,5 @@
 FROM node:20.16.0 as based
+
 FROM based as development
 WORKDIR /app
 COPY package.json .
@@ -11,7 +12,7 @@ COPY package.json .
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start-dev" ]
 
 
 FROM based as production
@@ -24,7 +25,7 @@ COPY package.json .
 #     then npm install --only=production; \
 #     else npm install; \
 #     fi
-RUN npm ci --only=production && npm cache clean --force
+RUN npm install --only=production
 COPY . .
 EXPOSE 3000
-CMD [ "npm", "run", "start-dev" ]
+CMD [ "npm", "start" ]
